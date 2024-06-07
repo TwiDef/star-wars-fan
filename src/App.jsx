@@ -1,16 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './App.module.css';
-import { getApiResource } from './utils/network';
+import PeoplePage from './pages/people-page';
 
 function App() {
   const { value } = useSelector(state => state.counter)
   const dispatch = useDispatch()
 
-
   return (
-    <div className={styles.container}>
-      <h1 className={styles.header}>text</h1>
-    </div>
+    <main className={styles.container}>
+      <div id={styles.stars}></div>
+      <div id={styles.stars2}></div>
+      <div id={styles.stars3}></div>
+
+      <div className={styles.wrapper}>
+        <PeoplePage />
+      </div>
+
+    </main>
   );
 }
 
