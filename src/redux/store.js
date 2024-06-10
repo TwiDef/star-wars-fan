@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterSlice from './slices/counterSlice'
+import charactersSlice from './slices/charactersSlice'
 
 export default configureStore({
     reducer: {
-        counter: counterSlice
+        characters: charactersSlice
     }
 })

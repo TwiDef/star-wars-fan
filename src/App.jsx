@@ -1,10 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import CharactersPage from './pages/characters-page';
+import Loader from './components/Loader/Loader';
+
 import styles from './App.module.css';
-import PeoplePage from './pages/people-page';
 
 function App() {
-  const { value } = useSelector(state => state.counter)
-  const dispatch = useDispatch()
+  const { charactersList } = useSelector(state => state.characters)
 
   return (
     <main className={styles.container}>
@@ -13,9 +14,8 @@ function App() {
       <div id={styles.stars3}></div>
 
       <div className={styles.wrapper}>
-        <PeoplePage />
+        <CharactersPage />
       </div>
-
     </main>
   );
 }
