@@ -37,8 +37,8 @@ const Header = () => {
             src="https://cdn-icons-png.flaticon.com/512/15475/15475029.png" alt="header-logo" />
         </a>
         <ul className={styles.items}>
-          {headerItems.map(item =>
-            <li className={styles.item}>
+          {headerItems.map((item, i) =>
+            <li className={styles.item} key={i}>
               <a className={styles.itemLink} href="#">
                 {item.children}
               </a>
@@ -48,6 +48,7 @@ const Header = () => {
         <a
           className={styles.link}
           href="#">
+          <span className={styles.countOfFavorites}>3</span>
           <img
             className={styles.favorites}
             src="https://cdn-icons-png.flaticon.com/512/9513/9513598.png " alt="favorites-logo" />

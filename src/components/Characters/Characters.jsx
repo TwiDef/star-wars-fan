@@ -6,37 +6,51 @@ import { setChars } from '../../redux/slices/charactersSlice';
 
 import styles from './Characters.module.css';
 import Loader from '../Loader/Loader';
+import Error from '../Error/Error';
 
 const Characters = () => {
   const dispatch = useDispatch()
   const { charactersList } = useSelector(state => state.characters)
+  const [apiError, setApiError] = React.useState(false)
 
   React.useEffect(() => {
-    getApiResource(GET_CHARACTERS)
-      .then(data => dispatch(setChars(data.results)))
+    (async () => {
+      try {
+        const data = await getApiResource(GET_CHARACTERS)
+        dispatch(setChars(data.results))
+        setApiError(false)
+      } catch (error) {
+        console.log(error.message)
+        setApiError(true)
+      }
+    })()
+
   }, [dispatch])
+
+  console.log(apiError)
 
   return (
     <>
-      {!charactersList.length ?
-        <Loader /> :
-        <ul className={styles.list}>
-          {charactersList.map((character, i) =>
-            <li className={styles.card} key={character + i}>
-              <a onClick={() => console.log(character)} className={styles.cardLink} href="#">
-                <div className={styles.nameBlock}>
-                  <h4 className={styles.name}>{character.name}</h4>
-                </div>
-                <img
-                  className={styles.img}
-                  src={`${BASE_IMG_URL}/characters/${(character.url)
-                    .replace(/[^0-9]/g, '')}.jpg`}
-                  alt="char-img" />
-              </a>
-            </li>
-          )}
-        </ul>
-      }
+      {apiError ?
+        <Error /> :
+        charactersList && !charactersList.length ?
+          <Loader /> :
+          <ul className={styles.list}>
+            {charactersList && charactersList.map((character, i) =>
+              <li className={styles.card} key={character + i}>
+                <a onClick={() => console.log(character)} className={styles.cardLink} href="#">
+                  <div className={styles.nameBlock}>
+                    <h4 className={styles.name}>{character.name}</h4>
+                  </div>
+                  <img
+                    className={styles.img}
+                    src={`${BASE_IMG_URL}/characters/${(character.url)
+                      .replace(/[^0-9]/g, '')}.jpg`}
+                    alt="char-img" />
+                </a>
+              </li>
+            )}
+          </ul>}
     </>
   )
 };
