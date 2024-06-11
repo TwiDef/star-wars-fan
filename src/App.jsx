@@ -3,6 +3,7 @@ import CharactersPage from './pages/characters-page';
 import Loader from './components/Loader/Loader';
 
 import styles from './App.module.css';
+import Header from './components/Header/Header';
 
 function App() {
   const { charactersList } = useSelector(state => state.characters)
@@ -14,6 +15,7 @@ function App() {
       <div id={styles.stars3}></div>
 
       <div className={styles.wrapper}>
+        <Header />
         <CharactersPage />
       </div>
     </main>

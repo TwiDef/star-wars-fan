@@ -22,8 +22,8 @@ const Characters = () => {
         <Loader /> :
         <ul className={styles.list}>
           {charactersList.map((character, i) =>
-            <a key={character + i} href="#">
-              <li className={styles.card}>
+            <li className={styles.card} key={character + i}>
+              <a onClick={() => console.log(character)} className={styles.cardLink} href="#">
                 <div className={styles.nameBlock}>
                   <h4 className={styles.name}>{character.name}</h4>
                 </div>
@@ -32,8 +32,8 @@ const Characters = () => {
                   src={`${BASE_IMG_URL}/characters/${(character.url)
                     .replace(/[^0-9]/g, '')}.jpg`}
                   alt="char-img" />
-              </li>
-            </a>
+              </a>
+            </li>
           )}
         </ul>
       }
