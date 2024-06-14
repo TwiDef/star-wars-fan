@@ -1,12 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getApiResource } from '../../utils/network';
-import { GET_CHARACTERS, BASE_IMG_URL } from '../../constants';
+import { getApiResource } from '@utils/network';
+import { GET_CHARACTERS, BASE_IMG_URL } from '@utils/constants';
 import { setChars } from '../../redux/slices/charactersSlice';
 
-import styles from './Characters.module.css';
 import Loader from '../Loader/Loader';
 import Error from '../Error/Error';
+
+import styles from './Characters.module.css';
 
 const Characters = () => {
   const dispatch = useDispatch()
@@ -26,8 +27,6 @@ const Characters = () => {
     })()
 
   }, [dispatch])
-
-  console.log(apiError)
 
   return (
     <>

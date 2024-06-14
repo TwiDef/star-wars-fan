@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 import CharactersPage from './pages/characters-page';
-import Loader from './components/Loader/Loader';
+
+import Header from './components/Header/Header';
 
 import styles from './App.module.css';
-import Header from './components/Header/Header';
 
 function App() {
   const { charactersList } = useSelector(state => state.characters)
