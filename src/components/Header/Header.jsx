@@ -1,27 +1,38 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { onSetIndex } from '../../redux/slices/pagesSlice';
 
 import styles from './Header.module.css';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
+  const { activePage } = useSelector(state => state.pages)
+  const dispatch = useDispatch()
+
   const headerItems = [
     {
       children: 'Home',
+      to: '/',
       active: false
     },
     {
       children: 'Characters',
+      to: 'characters',
       active: false
     },
     {
       children: 'Species',
+      to: 'species',
       active: false
     },
     {
       children: 'Starships',
+      to: 'starships',
       active: false
     },
     {
       children: 'Search',
+      to: 'search',
       active: false
     }
   ]
@@ -38,10 +49,13 @@ const Header = () => {
         </a>
         <ul className={styles.items}>
           {headerItems.map((item, i) =>
-            <li className={styles.item} key={i}>
-              <a className={styles.itemLink} href="#">
+            <li className={`${styles.item} ${activePage === i ? styles.itemActive : ""}`} key={i}>
+              <Link
+                to={item.to}
+                onClick={() => dispatch(onSetIndex(i))}
+                className={styles.itemLink}>
                 {item.children}
-              </a>
+              </Link>
             </li>
           )}
         </ul>
