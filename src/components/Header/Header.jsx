@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { onSetIndex } from '../../redux/slices/pagesSlice';
 
 import styles from './Header.module.css';
-import { Link } from 'react-router-dom';
 
 const Header = () => {
   const { activePage } = useSelector(state => state.pages)
@@ -40,13 +40,14 @@ const Header = () => {
   return (
     <header>
       <nav className={styles.wrapper}>
-        <a
+        <Link
+          onClick={() => dispatch(onSetIndex(0))}
           className={styles.link}
-          href="#">
+          to="/">
           <img
             className={styles.logo}
             src="https://cdn-icons-png.flaticon.com/512/15475/15475029.png" alt="header-logo" />
-        </a>
+        </Link>
         <ul className={styles.items}>
           {headerItems.map((item, i) =>
             <li className={`${styles.item} ${activePage === i ? styles.itemActive : ""}`} key={i}>
@@ -59,14 +60,14 @@ const Header = () => {
             </li>
           )}
         </ul>
-        <a
+        <Link
           className={styles.link}
-          href="#">
+          to="favorites">
           <span className={styles.countOfFavorites}>3</span>
           <img
             className={styles.favorites}
             src="https://cdn-icons-png.flaticon.com/512/9513/9513598.png " alt="favorites-logo" />
-        </a>
+        </Link>
       </nav>
     </header>
   );

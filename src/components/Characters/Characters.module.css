@@ -45,3 +45,21 @@
 .img {
     width: 100%;
 }
+
+@media (max-height: 800px)  {
+    .list {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        justify-items: center;
+        row-gap: 50px;
+    }
+
+    .card {
+        width: 160px;
+        font-size: 12px;
+    }
+
+    .card:hover .nameBlock {
+        padding: 10px;
+    }
+}

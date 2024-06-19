@@ -23,3 +23,19 @@
     font-size: 50px;
     text-align: center;
 }
+
+
+@media (max-height: 800px)  {
+    .img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .number {
+        font-size: 220px;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+  }

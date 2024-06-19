@@ -92,3 +92,9 @@ button {
     margin: 0 auto;
     color:var(--color-white);
 }
+
+@media (max-height: 800px)  {
+  .wrapper {
+    max-width: 1080px;
+  }
+}
