@@ -17,7 +17,7 @@ const Header = () => {
     },
     {
       children: 'Characters',
-      to: 'characters',
+      to: 'characters/?page=1',
       active: false
     },
     {

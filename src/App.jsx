@@ -16,7 +16,7 @@ function App() {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    navigate('/')
+    /* navigate('/') */
   }, [])
 
   return (
