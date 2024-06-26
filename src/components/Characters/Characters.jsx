@@ -1,34 +1,34 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getApiResource } from '@utils/network';
+import { getApiResource, getPageId } from '@utils/network';
 import { GET_CHARACTERS, BASE_IMG_URL, PARAM_PAGE } from '@utils/constants';
 import { setChars } from '../../redux/slices/charactersSlice';
 import { useQueryParams } from '../../hooks/useQueryParams';
 
 import Loader from '../Loader/Loader';
 import Error from '../Error/Error';
+import PageNavigation from '../PageNavigation/PageNavigation';
 
 import styles from './Characters.module.css';
-import { useLocation } from 'react-router';
 
 const Characters = () => {
   const dispatch = useDispatch()
   const { charactersList } = useSelector(state => state.characters)
+
   const [apiError, setApiError] = React.useState(false)
   const [prevPage, setPrevPage] = React.useState(null)
   const [nextPage, setNextPage] = React.useState(null)
-  /* const queryPage = useQueryParams().get('page') */
-  const [queryPage, setQueryPage] = React.useState(useQueryParams().get('page'))
+  const [counterPage, setCounterPage] = React.useState(1)
+  const queryPage = useQueryParams().get('page')
 
-  console.log(queryPage)
-
-  const getCharacters = async () => {
+  const getCharacters = async (url) => {
     try {
-      const data = await getApiResource(GET_CHARACTERS + PARAM_PAGE + queryPage)
+      const data = await getApiResource(url)
       dispatch(setChars(data.results))
 
       setPrevPage(data.previous)
       setNextPage(data.next)
+      setCounterPage(getPageId(url))
       setApiError(false)
     } catch (error) {
       console.log(error.message)
@@ -37,31 +37,18 @@ const Characters = () => {
   }
 
   React.useEffect(() => {
-    getCharacters()
-  }, [queryPage])
-
-  /*   const onChangePage = async (url) => {
-      if (url) {
-        const data = await getApiResource(url)
-        dispatch(setChars(data.results))
-  
-        setPrevPage(data.previous)
-        setNextPage(data.next)
-        setApiError(false)
-      }
-    } */
-
+    getCharacters(GET_CHARACTERS + PARAM_PAGE + queryPage)
+  }, [])
 
   return (
     <>
-      <div>
-        <button
-          disabled={!prevPage ? true : false}
-          onClick={() => setQueryPage(prev => (+prev) - 1)}>prev</button>
-        <button
-          disabled={!nextPage ? true : false}
-          onClick={() => setQueryPage(prev => (+prev) + 1)}>next</button>
-      </div>
+      <PageNavigation
+        urlAddress='/characters/?page='
+        counterPage={counterPage}
+        getCharacters={getCharacters}
+        prevPage={prevPage}
+        nextPage={nextPage}
+      />
 
       {apiError ?
         <Error /> :

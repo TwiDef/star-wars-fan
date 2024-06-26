@@ -6,9 +6,9 @@ import CharactersPage from './pages/characters-page';
 import Header from './components/Header/Header';
 import Error from './components/Error/Error';
 import HomePage from './pages/home-page';
+import Footer from './components/Footer/Footer';
 
 import styles from './App.module.css';
-import Footer from './components/Footer/Footer';
 
 
 function App() {
