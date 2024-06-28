@@ -16,8 +16,13 @@ export const getApiResource = async (url) => {
   }
 }
 
+/* functions helpers */
 export const getPageId = (url) => {
   const pos = url.lastIndexOf(PARAM_PAGE)
   const id = url.slice(pos + PARAM_PAGE.length, url.length)
   return +id
+}
+
+export const getNumFromStr = (string) => {
+  return (string).replace(/[^0-9]/g, '')
 }

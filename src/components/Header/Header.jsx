@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { onSetIndex } from '../../redux/slices/pagesSlice';
+import { onSetIndex } from '@redux/slices/pagesSlice';
 
 import styles from './Header.module.css';
 

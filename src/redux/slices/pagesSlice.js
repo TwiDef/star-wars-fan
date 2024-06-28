@@ -3,11 +3,14 @@ import { createSlice } from '@reduxjs/toolkit';
 export const pagesSlice = createSlice({
   name: 'pages',
   initialState: {
-    activePage: 0
+    activePage: localStorage.getItem('activePage') ?
+      Number(localStorage.getItem('activePage')) :
+      0
   },
   reducers: {
     onSetIndex: (state, action) => {
       state.activePage = action.payload
+      localStorage.setItem('activePage', action.payload)
     }
   }
 })
