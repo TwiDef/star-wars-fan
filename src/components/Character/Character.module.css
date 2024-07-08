@@ -1,0 +1,59 @@
+@import url('https://fonts.cdnfonts.com/css/star-wars');
+
+.wrapper {
+    display: flex;
+    gap: 100px;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.image {
+    position: relative;
+    text-align: center;
+}
+
+.like {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 35px;
+    left: -20px;
+}
+
+.info{
+    font-size: 20px;
+}
+
+.infoList h4{
+    display: inline;
+    text-transform: uppercase;
+    color: var(--color-light-blue)
+}
+
+.infoList li {
+    margin-bottom: 10px;
+}
+.filmInfo{}
+
+.goBackBtn {
+    font-family: 'Star Wars', sans-serif;
+    transition: all .1s ease-in-out;
+    display: flex;
+    align-items: center;
+    margin: 30px auto 0;
+    font-size: 20px;
+    font-weight: 600;
+    background: none;
+    color: var(--color-white);
+}
+
+.goBackBtn:hover {
+    text-shadow: 0px 2px 15px var(--color-light-blue),
+     5px 2px 15px var(--color-light-blue),
+      0px 2px 15px var(--color-light-blue),
+       -5px 2px 15px var(--color-light-blue);
+}
+
