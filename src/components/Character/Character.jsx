@@ -17,6 +17,7 @@ const Character = () => {
   const dispatch = useDispatch()
   const { singleCharacter } = useSelector(state => state.characters)
   const { apiError } = useSelector(state => state.api)
+  const [charInfo, setCharInfo] = React.useState(null)
   const params = useParams()
   const id = params.id
   const navigate = useNavigate()
@@ -29,6 +30,15 @@ const Character = () => {
         dispatch(setApiStatus(true))
       } else {
         dispatch(setSingleChar(data))
+        setCharInfo([
+          { property: 'height', evidence: data.height },
+          { property: 'mass', evidence: data.mass },
+          { property: 'hair color', evidence: data.hair_color },
+          { property: 'skin color', evidence: data.skin_color },
+          { property: 'eye color', evidence: data.eye_color },
+          { property: 'birth year', evidence: data.birth_year },
+          { property: 'gender', evidence: data.gender }
+        ])
         dispatch(setApiStatus(false))
       }
 
@@ -63,13 +73,16 @@ const Character = () => {
               <div className={styles.info}>
                 <h2 className={styles.infoTitle}>Character Info</h2>
                 <ul className={styles.infoList}>
-                  <li><h4> Height :</h4> {singleCharacter.height} cm</li>
-                  <li><h4> Mass :</h4> {singleCharacter.mass} kg</li>
-                  <li><h4> Hair color :</h4> {singleCharacter.hair_color}</li>
-                  <li><h4> Skin color :</h4> {singleCharacter.skin_color}</li>
-                  <li><h4> Eye color :</h4> {singleCharacter.eye_color}</li>
-                  <li><h4> Birth year :</h4> {singleCharacter.birth_year}</li>
-                  <li><h4> Gender :</h4> {singleCharacter.gender}</li>
+                  {charInfo && (
+                    charInfo.map(({ property, evidence }, i) => {
+                      return (
+                        <li key={i}>
+                          <h4>{property}: </h4>{evidence}
+                          {property === 'height' ? ' cm' : ''}
+                          {property === 'mass' ? ' kg' : ''}
+                        </li>)
+                    })
+                  )}
                 </ul>
               </div>
               <div className={styles.filmInfo}>
