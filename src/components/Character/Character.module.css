@@ -23,6 +23,11 @@ h2 {
     text-align: center;
 }
 
+.image img {
+    object-fit: cover;
+    object-position: center center;
+}
+
 .like {
     position: absolute;
     width: 40px;
@@ -47,6 +52,7 @@ h2 {
 .filmInfo{}
 
 .goBackBtn {
+    position: relative;
     font-family: 'Star Wars', sans-serif;
     transition: all .1s ease-in-out;
     display: flex;
@@ -57,6 +63,12 @@ h2 {
     background: none;
     color: var(--color-white);
 }
+.goBackBtn span {
+    position: absolute;
+    font-size: 40px;
+    top: -16px;
+    left: -42px;
+} 
 
 .goBackBtn:hover {
     text-shadow: 0px 2px 15px var(--color-light-blue),

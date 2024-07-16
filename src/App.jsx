@@ -10,7 +10,6 @@ import Footer from './components/Footer/Footer';
 
 import styles from './App.module.css';
 
-
 function App() {
   const navigate = useNavigate();
 

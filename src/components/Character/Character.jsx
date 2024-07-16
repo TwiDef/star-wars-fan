@@ -3,8 +3,8 @@ import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSingleChar } from '@redux/slices/charactersSlice';
-import { setApiStatus } from '../../redux/slices/apiSlice';
-import { getApiResource } from '@utils/network';
+import { setApiStatus } from '@redux/slices/apiSlice';
+import { getApiResource, getApiResources } from '@utils/network';
 import { BASE_URL, BASE_IMG_URL } from '@utils/constants';
 import { getNumFromStr } from '@utils/network';
 
@@ -18,9 +18,10 @@ const Character = () => {
   const { singleCharacter } = useSelector(state => state.characters)
   const { apiError } = useSelector(state => state.api)
   const [charInfo, setCharInfo] = React.useState(null)
+  const [films, setFilms] = React.useState([])
+  const navigate = useNavigate()
   const params = useParams()
   const id = params.id
-  const navigate = useNavigate()
 
   const getCharacter = async (url) => {
     try {
@@ -41,7 +42,6 @@ const Character = () => {
         ])
         dispatch(setApiStatus(false))
       }
-
     } catch (error) {
       console.log(error.message)
     }
@@ -53,6 +53,15 @@ const Character = () => {
       dispatch(setSingleChar(null))
     }
   }, [id])
+
+  React.useEffect(() => {
+    if (singleCharacter) {
+      getApiResources(singleCharacter.films)
+        .then(films => setFilms(films))
+    }
+  }, [singleCharacter])
+
+  console.log(films)
 
   return (
     <>
@@ -71,7 +80,7 @@ const Character = () => {
                   alt="char-img" />
               </div>
               <div className={styles.info}>
-                <h2 className={styles.infoTitle}>Character Info</h2>
+                <h2 className={styles.infoTitle}>Info</h2>
                 <ul className={styles.infoList}>
                   {charInfo && (
                     charInfo.map(({ property, evidence }, i) => {
@@ -97,7 +106,7 @@ const Character = () => {
             </div>
 
             <button className={styles.goBackBtn} onClick={() => navigate(-1)}>
-              go back
+              <span>&#8592; </span>go back
             </button>
           </>
           : <Loader />}
