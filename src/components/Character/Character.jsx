@@ -10,6 +10,7 @@ import { getNumFromStr } from '@utils/network';
 
 import Error from '../Error/Error';
 import Loader from '../Loader/Loader';
+import FilmList from '../FilmList/FilmList';
 
 import styles from './Character.module.css';
 
@@ -61,8 +62,6 @@ const Character = () => {
     }
   }, [singleCharacter])
 
-  console.log(films)
-
   return (
     <>
       {apiError ? <Error /> :
@@ -96,12 +95,7 @@ const Character = () => {
               </div>
               <div className={styles.filmInfo}>
                 <h2 className={styles.filmTitle}>Episodes</h2>
-                <ul>
-                  <li>Episode: X</li>
-                  <li>Episode: X</li>
-                  <li>Episode: X</li>
-                  <li>Episode: X</li>
-                </ul>
+                <FilmList films={films} />
               </div>
             </div>
 

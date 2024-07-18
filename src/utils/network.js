@@ -17,10 +17,14 @@ export const getApiResource = async (url) => {
 }
 
 export const getApiResources = async (urls) => {
-  return await Promise.all(urls.map(async url => {
-    const res = await fetch(url)
-    return await res.json()
-  }))
+  try {
+    return await Promise.all(urls.map(async url => {
+      const res = await fetch(url)
+      return await res.json()
+    }))
+  } catch (error) {
+    console.error('Could not fetch.', error.message)
+  }
 }
 
 /* functions helpers */
