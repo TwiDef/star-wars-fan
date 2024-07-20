@@ -20,8 +20,10 @@ export const getApiResources = async (urls) => {
   try {
     return await Promise.all(urls.map(async url => {
       const res = await fetch(url)
+
       return await res.json()
     }))
+
   } catch (error) {
     console.error('Could not fetch.', error.message)
   }

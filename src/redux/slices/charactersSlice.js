@@ -5,6 +5,7 @@ export const charactersSlice = createSlice({
   initialState: {
     charactersList: [],
     singleCharacter: null,
+    favorites: [],
   },
   reducers: {
     setChars: (state, action) => {
@@ -12,10 +13,20 @@ export const charactersSlice = createSlice({
     },
     setSingleChar: (state, action) => {
       state.singleCharacter = action.payload
+    },
+    addToFavorites: (state, action) => {
+      const findCharacter = state.favorites.find(char => {
+        return char.name === action.payload.name
+      })
+      if (!findCharacter) {
+        state.favorites.push({ ...action.payload })
+      } else {
+        /* remove from array */
+      }
     }
   }
 })
 
-export const { setChars, setSingleChar } = charactersSlice.actions
+export const { setChars, setSingleChar, addToFavorites } = charactersSlice.actions
 
 export default charactersSlice.reducer

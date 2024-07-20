@@ -2,11 +2,14 @@ import React from 'react';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSingleChar } from '@redux/slices/charactersSlice';
+import { setSingleChar, addToFavorites } from '@redux/slices/charactersSlice';
 import { setApiStatus } from '@redux/slices/apiSlice';
 import { getApiResource, getApiResources } from '@utils/network';
 import { BASE_URL, BASE_IMG_URL } from '@utils/constants';
 import { getNumFromStr } from '@utils/network';
+
+import like_active from '@assets/img/like_active.png';
+import like_disactive from '@assets/img/like_disactive.png';
 
 import Error from '../Error/Error';
 import Loader from '../Loader/Loader';
@@ -16,7 +19,7 @@ import styles from './Character.module.css';
 
 const Character = () => {
   const dispatch = useDispatch()
-  const { singleCharacter } = useSelector(state => state.characters)
+  const { singleCharacter, favorites } = useSelector(state => state.characters)
   const { apiError } = useSelector(state => state.api)
   const [charInfo, setCharInfo] = React.useState(null)
   const [films, setFilms] = React.useState([])
@@ -48,6 +51,10 @@ const Character = () => {
     }
   }
 
+  const toggleToFavorites = () => {
+    dispatch(addToFavorites(singleCharacter))
+  }
+
   React.useEffect(() => {
     getCharacter(BASE_URL + 'people/' + id)
     return () => {
@@ -70,9 +77,9 @@ const Character = () => {
             <div className={styles.wrapper}>
               <div className={styles.image}>
                 <h2 className={styles.title}>{singleCharacter.name}</h2>
-                <button>
+                <button onClick={toggleToFavorites}>
                   <img className={styles.like}
-                    src="https://cdn-icons-png.flaticon.com/512/833/833472.png " alt="like" />
+                    src={like_disactive} alt="like" />
                 </button>
                 <img
                   src={`${BASE_IMG_URL}/characters/${getNumFromStr(singleCharacter.url)}.jpg`}
@@ -94,7 +101,7 @@ const Character = () => {
                 </ul>
               </div>
               <div className={styles.filmInfo}>
-                <h2 className={styles.filmTitle}>Episodes</h2>
+                <h2 className={styles.filmTitle}>Related Films</h2>
                 <FilmList films={films} />
               </div>
             </div>

@@ -7,6 +7,7 @@ import styles from './Header.module.css';
 
 const Header = () => {
   const { activePage } = useSelector(state => state.pages)
+  const { favorites } = useSelector(state => state.characters)
   const dispatch = useDispatch()
 
   const headerItems = [
@@ -63,7 +64,7 @@ const Header = () => {
         <Link
           className={styles.link}
           to="favorites">
-          <span className={styles.countOfFavorites}>3</span>
+          <span className={styles.countOfFavorites}>{favorites.length}</span>
           <img
             className={styles.favorites}
             src="https://cdn-icons-png.flaticon.com/512/9513/9513598.png " alt="favorites-logo" />

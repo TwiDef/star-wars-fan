@@ -8,14 +8,16 @@ const FilmList = ({ films }) => {
 
   return (
     <ul className={styles.list}>
-      {films && films.length > 0 ? films.map((film, i) => {
+      {films && films.length > 0 ? films.map(({ url, episode_id, title }, i) => {
         return (
           <li key={i}>
             <a className={styles.link} href="#" >
-              <img src={`${BASE_IMG_URL}/films/${getNumFromStr(film.url)}.jpg`} alt="film-img" />
+              <div className={styles.imgWrapper}>
+                <img src={`${BASE_IMG_URL}/films/${getNumFromStr(url)}.jpg`} alt="film-img" />
+              </div>
               <div>
-                <h5>Episode: {film.episode_id}</h5>
-                <h6 className={styles.title}>{film.title}</h6>
+                <h5>Episode: {episode_id}</h5>
+                <h6 className={styles.title}>{title}</h6>
               </div>
             </a>
           </li>
