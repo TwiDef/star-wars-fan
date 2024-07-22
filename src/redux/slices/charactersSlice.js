@@ -19,9 +19,11 @@ export const charactersSlice = createSlice({
         return char.name === action.payload.name
       })
       if (!findCharacter) {
-        state.favorites.push({ ...action.payload })
+        state.favorites.push(action.payload)
       } else {
-        /* remove from array */
+        state.favorites = state.favorites.filter(char => {
+          return char.name !== action.payload.name
+        })
       }
     }
   }

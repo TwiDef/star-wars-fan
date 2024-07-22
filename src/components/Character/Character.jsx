@@ -23,6 +23,7 @@ const Character = () => {
   const { apiError } = useSelector(state => state.api)
   const [charInfo, setCharInfo] = React.useState(null)
   const [films, setFilms] = React.useState([])
+  const [likeStatus, setLikeStatus] = React.useState(false)
   const navigate = useNavigate()
   const params = useParams()
   const id = params.id
@@ -79,7 +80,7 @@ const Character = () => {
                 <h2 className={styles.title}>{singleCharacter.name}</h2>
                 <button onClick={toggleToFavorites}>
                   <img className={styles.like}
-                    src={like_disactive} alt="like" />
+                    src={""} alt="like-img" />
                 </button>
                 <img
                   src={`${BASE_IMG_URL}/characters/${getNumFromStr(singleCharacter.url)}.jpg`}
