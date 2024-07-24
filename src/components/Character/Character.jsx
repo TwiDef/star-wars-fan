@@ -57,6 +57,14 @@ const Character = () => {
   }
 
   React.useEffect(() => {
+    if (singleCharacter) {
+      (favorites.find(char => char.name === singleCharacter.name))
+        ? setLikeStatus(true)
+        : setLikeStatus(false)
+    }
+  }, [favorites, singleCharacter])
+
+  React.useEffect(() => {
     getCharacter(BASE_URL + 'people/' + id)
     return () => {
       dispatch(setSingleChar(null))
@@ -80,7 +88,7 @@ const Character = () => {
                 <h2 className={styles.title}>{singleCharacter.name}</h2>
                 <button onClick={toggleToFavorites}>
                   <img className={styles.like}
-                    src={""} alt="like-img" />
+                    src={likeStatus ? like_active : like_disactive} alt="like-img" />
                 </button>
                 <img
                   src={`${BASE_IMG_URL}/characters/${getNumFromStr(singleCharacter.url)}.jpg`}
