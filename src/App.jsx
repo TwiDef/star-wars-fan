@@ -1,7 +1,8 @@
 import React from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import CharactersPage from './pages/characters-page';
+import FavoritesPage from './pages/favorites-page';
 import CharacterPage from './pages/character-page';
 import Header from './components/Header/Header';
 import Error from './components/Error/Error';
@@ -10,13 +11,8 @@ import Footer from './components/Footer/Footer';
 
 import styles from './App.module.css';
 
+
 function App() {
-  const navigate = useNavigate();
-
-  React.useEffect(() => {
-    /* navigate('/') */
-  }, [])
-
   return (
     <main className={styles.container}>
       <div id={styles.stars}></div>
@@ -32,7 +28,7 @@ function App() {
           <Route path='/species' element={<div>Species</div>} />
           <Route path='/starships' element={<div>Starships</div>} />
           <Route path='/search' element={<div>Search</div>} />
-          <Route path='/favorites' element={<div>Favorites</div>} />
+          <Route path='/favorites' element={<FavoritesPage />} />
 
           <Route path='*' element={<Error />} />
         </Routes>
