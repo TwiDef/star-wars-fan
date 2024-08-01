@@ -5,12 +5,14 @@ import CharactersPage from './pages/characters-page';
 import FavoritesPage from './pages/favorites-page';
 import CharacterPage from './pages/character-page';
 import FilmsPage from './pages/films-page';
+import FilmPage from './pages/film-page';
 import Header from './components/Header/Header';
 import Error from './components/Error/Error';
 import HomePage from './pages/home-page';
 import Footer from './components/Footer/Footer';
 
 import styles from './App.module.css';
+
 
 function App() {
 
@@ -27,7 +29,7 @@ function App() {
           <Route path='/characters' element={<CharactersPage />} />
           <Route path='/characters/:id' element={<CharacterPage />} />
           <Route path='/films' element={<FilmsPage />} />
-          <Route path='/films/:id' element={<div>Film</div>} />
+          <Route path='/films/:id' element={<FilmPage />} />
           <Route path='/species' element={<div>Species</div>} />
           <Route path='/search' element={<div>Search</div>} />
           <Route path='/favorites' element={<FavoritesPage />} />

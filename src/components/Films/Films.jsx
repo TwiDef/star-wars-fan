@@ -49,7 +49,7 @@ const Films = () => {
             {filmList && filmList.map((film, i) =>
               <li className={styles.card} key={film + i}>
                 <Link
-                  to={`/film/${getNumFromStr(film.url)}`}
+                  to={`/films/${getNumFromStr(film.url)}`}
                   className={styles.cardLink}>
                   <div className={styles.nameBlock}>
                     <h4 className={styles.name}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BASE_IMG_URL } from '@utils/constants';
-import { getNumFromStr } from '@utils/helpers';
+import { getNumFromStr, getEpisodeSymbol } from '@utils/helpers';
 
 import styles from './FilmList.module.css';
 
@@ -16,7 +16,7 @@ const FilmList = ({ films }) => {
                 <img src={`${BASE_IMG_URL}/films/${getNumFromStr(url)}.jpg`} alt="film-img" />
               </div>
               <div>
-                <h5>Episode: {episode_id}</h5>
+                <h5>Episode: {getEpisodeSymbol(episode_id)}</h5>
                 <h6 className={styles.title}>{title}</h6>
               </div>
             </a>
