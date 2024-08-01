@@ -1,6 +1,6 @@
 import React from 'react';
 import { BASE_IMG_URL } from '@utils/constants';
-import { getNumFromStr } from '@utils/network';
+import { getNumFromStr } from '@utils/helpers';
 
 import styles from './FilmList.module.css';
 

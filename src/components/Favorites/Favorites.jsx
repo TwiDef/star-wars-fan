@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { BASE_IMG_URL } from '@utils/constants';
-import { getNumFromStr } from '@utils/network';
+import { getNumFromStr } from '@utils/helpers';
 import { onSetIndex } from '@redux/slices/pagesSlice';
 
 import Loader from '../Loader/Loader';

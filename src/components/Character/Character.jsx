@@ -7,7 +7,7 @@ import { setApiStatus } from '@redux/slices/apiSlice';
 import { onSetIndex } from '@redux/slices/pagesSlice';
 import { getApiResource, getApiResources } from '@utils/network';
 import { BASE_URL, BASE_IMG_URL } from '@utils/constants';
-import { getNumFromStr } from '@utils/network';
+import { getNumFromStr } from '@utils/helpers';
 
 import like_active from '@assets/img/like_active.png';
 import like_disactive from '@assets/img/like_disactive.png';

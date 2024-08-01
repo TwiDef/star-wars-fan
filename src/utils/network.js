@@ -1,4 +1,3 @@
-import { PARAM_PAGE } from "./constants";
 
 export const getApiResource = async (url) => {
   try {
@@ -27,15 +26,4 @@ export const getApiResources = async (urls) => {
   } catch (error) {
     console.error('Could not fetch.', error.message)
   }
-}
-
-/* functions helpers */
-export const getPageId = (url) => {
-  const pos = url.lastIndexOf(PARAM_PAGE)
-  const id = url.slice(pos + PARAM_PAGE.length, url.length)
-  return +id
-}
-
-export const getNumFromStr = (string) => {
-  return (string).replace(/[^0-9]/g, '')
 }

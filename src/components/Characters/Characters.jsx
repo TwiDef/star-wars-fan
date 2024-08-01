@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getApiResource, getPageId, getNumFromStr } from '@utils/network';
+import { getApiResource } from '@utils/network';
+import { getPageId, getNumFromStr } from '@utils/helpers';
 import { GET_CHARACTERS, BASE_IMG_URL, PARAM_PAGE } from '@utils/constants';
 import { setChars } from '@redux/slices/charactersSlice';
 import { setApiStatus } from '@redux/slices/apiSlice';

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getApiResource, getNumFromStr } from '@utils/network';
+import { getApiResource } from '@utils/network';
+import { getNumFromStr, getEpisodeSymbol } from '@utils/helpers';
 import { GET_FILMS, BASE_IMG_URL } from '@utils/constants';
 import { setFilms } from '@redux/slices/filmsSlice';
 import { setApiStatus } from '@redux/slices/apiSlice';
@@ -51,7 +52,9 @@ const Films = () => {
                   to={`/film/${getNumFromStr(film.url)}`}
                   className={styles.cardLink}>
                   <div className={styles.nameBlock}>
-                    <h4 className={styles.name}>{film.title}</h4>
+                    <h4 className={styles.name}>
+                      Episode {getEpisodeSymbol(film.episode_id)}: {film.title}
+                    </h4>
                   </div>
                   <img
                     className={styles.img}
