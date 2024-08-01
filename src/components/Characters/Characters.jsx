@@ -1,19 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getApiResource, getPageId } from '@utils/network';
+import { getApiResource, getPageId, getNumFromStr } from '@utils/network';
 import { GET_CHARACTERS, BASE_IMG_URL, PARAM_PAGE } from '@utils/constants';
 import { setChars } from '@redux/slices/charactersSlice';
 import { setApiStatus } from '@redux/slices/apiSlice';
 import { useQueryParams } from '@hooks/useQueryParams';
-import { getNumFromStr } from '@utils/network';
 
 import Loader from '../Loader/Loader';
 import Error from '../Error/Error';
 import PageNavigation from '../PageNavigation/PageNavigation';
 
 import styles from './Characters.module.css';
-
 
 const Characters = () => {
   const dispatch = useDispatch()
@@ -45,6 +43,12 @@ const Characters = () => {
 
   React.useEffect(() => {
     getCharacters(GET_CHARACTERS + PARAM_PAGE + queryPage)
+  }, [])
+
+  React.useEffect(() => {
+    return () => {
+      dispatch(setApiStatus(false))
+    }
   }, [])
 
   return (

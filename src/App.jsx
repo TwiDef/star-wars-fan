@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import CharactersPage from './pages/characters-page';
 import FavoritesPage from './pages/favorites-page';
 import CharacterPage from './pages/character-page';
+import FilmsPage from './pages/films-page';
 import Header from './components/Header/Header';
 import Error from './components/Error/Error';
 import HomePage from './pages/home-page';
@@ -11,8 +12,8 @@ import Footer from './components/Footer/Footer';
 
 import styles from './App.module.css';
 
-
 function App() {
+
   return (
     <main className={styles.container}>
       <div id={styles.stars}></div>
@@ -25,8 +26,9 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/characters' element={<CharactersPage />} />
           <Route path='/characters/:id' element={<CharacterPage />} />
+          <Route path='/films' element={<FilmsPage />} />
+          <Route path='/films/:id' element={<div>Film</div>} />
           <Route path='/species' element={<div>Species</div>} />
-          <Route path='/starships' element={<div>Starships</div>} />
           <Route path='/search' element={<div>Search</div>} />
           <Route path='/favorites' element={<FavoritesPage />} />
 

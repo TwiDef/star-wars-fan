@@ -22,13 +22,13 @@ const Header = () => {
       active: false
     },
     {
-      children: 'Species',
-      to: 'species',
+      children: 'Films',
+      to: 'films',
       active: false
     },
     {
-      children: 'Starships',
-      to: 'starships',
+      children: 'Species',
+      to: 'species',
       active: false
     },
     {
