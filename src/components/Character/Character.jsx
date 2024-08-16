@@ -1,6 +1,5 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSingleChar, addToFavorites } from '@redux/slices/charactersSlice';
 import { setApiStatus } from '@redux/slices/apiSlice';
@@ -15,6 +14,7 @@ import like_disactive from '@assets/img/like_disactive.png';
 import Error from '../Error/Error';
 import Loader from '../Loader/Loader';
 import FilmList from '../FilmList/FilmList';
+import ButtonBack from '../ButtonBack/ButtonBack';
 
 import styles from './Character.module.css';
 
@@ -25,7 +25,6 @@ const Character = () => {
   const [charInfo, setCharInfo] = React.useState(null)
   const [films, setFilms] = React.useState([])
   const [likeStatus, setLikeStatus] = React.useState(false)
-  const navigate = useNavigate()
   const params = useParams()
   const id = params.id
 
@@ -120,9 +119,7 @@ const Character = () => {
               </div>
             </div>
 
-            <button className={styles.goBackBtn} onClick={() => navigate(-1)}>
-              <span>&#8592; </span>go back
-            </button>
+            <ButtonBack />
           </>
           : <Loader />}
     </>
