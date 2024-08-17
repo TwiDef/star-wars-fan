@@ -3,7 +3,6 @@ import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSingleChar, addToFavorites } from '@redux/slices/charactersSlice';
 import { setApiStatus } from '@redux/slices/apiSlice';
-import { onSetIndex } from '@redux/slices/pagesSlice';
 import { getApiResource, getApiResources } from '@utils/network';
 import { BASE_URL, BASE_IMG_URL } from '@utils/constants';
 import { getNumFromStr } from '@utils/helpers';
@@ -55,10 +54,6 @@ const Character = () => {
   const toggleToFavorites = () => {
     dispatch(addToFavorites(singleCharacter))
   }
-
-  React.useEffect(() => {
-    dispatch(onSetIndex(1))
-  }, [])
 
   React.useEffect(() => {
     if (singleCharacter) {

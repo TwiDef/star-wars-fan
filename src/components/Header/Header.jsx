@@ -1,40 +1,32 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { onSetIndex } from '@redux/slices/pagesSlice';
+import { useSelector } from 'react-redux';
+import { Link, NavLink } from 'react-router-dom';
 
 import styles from './Header.module.css';
 
 const Header = () => {
-  const { activePage } = useSelector(state => state.pages)
   const { favorites } = useSelector(state => state.characters)
-  const dispatch = useDispatch()
 
   const headerItems = [
     {
       children: 'Home',
-      to: '/',
-      active: false
+      to: '/'
     },
     {
       children: 'Characters',
-      to: 'characters/?page=1',
-      active: false
+      to: 'characters/?page=1'
     },
     {
       children: 'Films',
-      to: 'films',
-      active: false
+      to: 'films'
     },
     {
       children: 'Species',
-      to: 'species',
-      active: false
+      to: 'species'
     },
     {
       children: 'Search',
-      to: 'search',
-      active: false
+      to: 'search'
     }
   ]
 
@@ -42,7 +34,6 @@ const Header = () => {
     <header>
       <nav className={styles.wrapper}>
         <Link
-          onClick={() => dispatch(onSetIndex(0))}
           className={styles.link}
           to="/">
           <img
@@ -51,13 +42,12 @@ const Header = () => {
         </Link>
         <ul className={styles.items}>
           {headerItems.map((item, i) =>
-            <li className={`${styles.item} ${activePage === i ? styles.itemActive : ""}`} key={i}>
-              <Link
+            <li className={styles.item} key={i}>
+              <NavLink
                 to={item.to}
-                onClick={() => dispatch(onSetIndex(i))}
-                className={styles.itemLink}>
+                className={({ isActive }) => isActive ? `${styles.itemActive}` : ""}>
                 {item.children}
-              </Link>
+              </NavLink>
             </li>
           )}
         </ul>

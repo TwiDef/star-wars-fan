@@ -16,6 +16,10 @@ import styles from './App.module.css';
 
 function App() {
 
+  fetch('https://swapi.dev/api/people/?search=o')
+    .then(res => res.json())
+    .then(data => console.log(data))
+
   return (
     <main className={styles.container}>
       <div id={styles.stars}></div>

@@ -61,9 +61,9 @@ const Film = () => {
                 Episode {getEpisodeSymbol(singleFilm.episode_id)}: {singleFilm.title}
               </h3>
               <div className={styles.desctiption}>
-                <p><span>Release date: </span> {singleFilm.release_date}</p>
-                <p><span>Director:</span>  {singleFilm.director}</p>
-                <p><span>Producer(s): </span> {singleFilm.producer}</p>
+                <p><span>Release date: </span>{singleFilm.release_date}</p>
+                <p><span>Director: </span>{singleFilm.director}</p>
+                <p><span>Producer(s): </span>{singleFilm.producer}</p>
                 <p><span>Description: </span><br />
                   <p className={styles.text}>{singleFilm.opening_crawl}</p>
                 </p>
