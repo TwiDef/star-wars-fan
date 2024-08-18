@@ -6,6 +6,7 @@ import FavoritesPage from './pages/favorites-page';
 import CharacterPage from './pages/character-page';
 import FilmsPage from './pages/films-page';
 import FilmPage from './pages/film-page';
+import SearchPage from './pages/search-page';
 import Header from './components/Header/Header';
 import Error from './components/Error/Error';
 import HomePage from './pages/home-page';
@@ -13,12 +14,7 @@ import Footer from './components/Footer/Footer';
 
 import styles from './App.module.css';
 
-
 function App() {
-
-  fetch('https://swapi.dev/api/people/?search=o')
-    .then(res => res.json())
-    .then(data => console.log(data))
 
   return (
     <main className={styles.container}>
@@ -35,7 +31,7 @@ function App() {
           <Route path='/films' element={<FilmsPage />} />
           <Route path='/films/:id' element={<FilmPage />} />
           <Route path='/species' element={<div>Species</div>} />
-          <Route path='/search' element={<div>Search</div>} />
+          <Route path='/search' element={<SearchPage />} />
           <Route path='/favorites' element={<FavoritesPage />} />
 
           <Route path='*' element={<Error />} />

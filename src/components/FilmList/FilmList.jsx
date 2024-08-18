@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BASE_IMG_URL } from '@utils/constants';
 import { getNumFromStr, getEpisodeSymbol } from '@utils/helpers';
 
@@ -11,7 +12,7 @@ const FilmList = ({ films }) => {
       {films && films.length > 0 ? films.map(({ url, episode_id, title }, i) => {
         return (
           <li key={i}>
-            <a className={styles.link} href="#" >
+            <Link className={styles.link} to={`/films/${episode_id}`}>
               <div className={styles.imgWrapper}>
                 <img src={`${BASE_IMG_URL}/films/${getNumFromStr(url)}.jpg`} alt="film-img" />
               </div>
@@ -19,7 +20,7 @@ const FilmList = ({ films }) => {
                 <h5>Episode: {getEpisodeSymbol(episode_id)}</h5>
                 <h6 className={styles.title}>{title}</h6>
               </div>
-            </a>
+            </Link>
           </li>
         )
       }) : <div>Loading...</div>}
