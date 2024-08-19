@@ -1,9 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getApiResource } from '@utils/network';
-import { GET_SEARCH } from '@utils/constants';
+import { BASE_IMG_URL, GET_SEARCH } from '@utils/constants';
+import { getNumFromStr } from '@utils/helpers';
 import { setSearchValue, setSearchList } from '@redux/slices/searchSlice';
 import { setApiStatus } from '@redux/slices/apiSlice';
+
+import SearchCharList from './SearchCharList/SearchCharList';
 
 import styles from './Search.module.css';
 
@@ -14,7 +17,15 @@ const Search = () => {
   const getResponse = async (param) => {
     try {
       const data = await getApiResource(GET_SEARCH + param)
-      dispatch(setSearchList(data.results))
+
+      if (data) {
+        const list = data.results.map(({ name, url }) => {
+          const id = getNumFromStr(url)
+          const img = `${BASE_IMG_URL}/characters/${getNumFromStr(url)}.jpg`
+          return { id, name, img }
+        })
+        dispatch(setSearchList(list))
+      }
 
       dispatch(setApiStatus(false))
     } catch (error) {
@@ -28,20 +39,36 @@ const Search = () => {
     getResponse(searchValue)
   }
 
+  const onClearInput = () => {
+    dispatch(setSearchValue(""))
+  }
+
+  React.useEffect(() => {
+    if (!searchValue) getResponse("")
+  }, [searchValue])
+
   React.useEffect(() => {
     return () => {
       dispatch(setApiStatus(false))
     }
-  }, [])
+  }, [dispatch])
 
   return (
-    <>
-      <input
-        className={styles.input}
-        value={searchValue}
-        onChange={(e) => onChangeInputValue(e)}
-        type="text" />
-    </>
+    <div className={styles.wrapper}>
+      <div className={styles.inputBox}>
+        <input
+          className={styles.input}
+          value={searchValue}
+          onChange={(e) => onChangeInputValue(e)}
+          type="text" />
+        <button
+          className={styles.inputClearBtn}
+          onClick={() => onClearInput()}
+        >&#10060;</button>
+      </div>
+      <SearchCharList />
+
+    </div>
   );
 };
 

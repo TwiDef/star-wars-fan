@@ -68,7 +68,7 @@ const Film = () => {
                   <p className={styles.text}>{singleFilm.opening_crawl}</p>
                 </p>
               </div>
-              <div style={{ "margin-top": "auto" }}><ButtonBack /></div>
+              <div style={{ "marginTop": "auto" }}><ButtonBack /></div>
             </div>
           </div>
       }
