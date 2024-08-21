@@ -8,23 +8,29 @@ const SearchCharList = () => {
   const { searchList } = useSelector(state => state.search)
 
   return (
-    <ul className={styles.charList}>
-      {searchList.length ?
-        searchList.map(({ id, name, img }, i) => {
-          return (
-            <Link
-              className={styles.charLink}
-              to={`/characters/${id}`}
-              key={i}>
-              <li className={styles.char} >
-                <img className={styles.charImg} src={img} alt="char-img" />
-                <h5 className={styles.charName}>{name}</h5>
-              </li>
-            </Link>
-          )
-        }) :
-        <p>No results</p>}
-    </ul>
+    <>
+      {searchList.length ? <ul className={styles.charList}>
+        {
+          searchList.map(({ id, name, img }, i) => {
+            return (
+              <Link
+                className={styles.charLink}
+                to={`/characters/${id}`}
+                key={i}>
+                <li className={styles.char} >
+                  <img className={styles.charImg} src={img} alt={name} />
+                  <h5 className={styles.charName}>{name}</h5>
+                </li>
+              </Link>
+            )
+          })
+        }
+      </ul> :
+        <div className={styles.noResults}>
+          <h4>Sorry, we can't find it</h4>
+          <img src="https://cdn-icons-png.flaticon.com/512/2363/2363876.png " />
+        </div>}
+    </>
   );
 };
 

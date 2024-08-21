@@ -40,3 +40,20 @@
 .charName {
     font-size: 18px;
 }
+
+.noResults {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.noResults img {
+    width: 300px;
+    height: 300px;
+}
+
+.noResults h4 {
+    font-size: 26px;
+}

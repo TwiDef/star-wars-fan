@@ -7,6 +7,7 @@ import { setSearchValue, setSearchList } from '@redux/slices/searchSlice';
 import { setApiStatus } from '@redux/slices/apiSlice';
 
 import SearchCharList from './SearchCharList/SearchCharList';
+import SearchInput from './SearchInput/SearchInput';
 
 import styles from './Search.module.css';
 
@@ -55,19 +56,11 @@ const Search = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.inputBox}>
-        <input
-          className={styles.input}
-          value={searchValue}
-          onChange={(e) => onChangeInputValue(e)}
-          type="text" />
-        <button
-          className={styles.inputClearBtn}
-          onClick={() => onClearInput()}
-        >&#10060;</button>
-      </div>
+      <SearchInput
+        searchValue={searchValue}
+        onChangeInputValue={onChangeInputValue}
+        onClearInput={onClearInput} />
       <SearchCharList />
-
     </div>
   );
 };
