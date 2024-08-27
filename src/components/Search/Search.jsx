@@ -1,4 +1,5 @@
 import React from 'react';
+import debounce from 'lodash.debounce';
 import { useDispatch, useSelector } from 'react-redux';
 import { getApiResource } from '@utils/network';
 import { BASE_IMG_URL, GET_SEARCH } from '@utils/constants';
@@ -35,9 +36,13 @@ const Search = () => {
     }
   }
 
+  const debouncedGetResponse = React.useCallback(
+    debounce(searchValue => getResponse(searchValue), 300), []
+  )
+
   const onChangeInputValue = (e) => {
     dispatch(setSearchValue(e.target.value))
-    getResponse(searchValue)
+    debouncedGetResponse(searchValue)
   }
 
   const onClearInput = () => {
