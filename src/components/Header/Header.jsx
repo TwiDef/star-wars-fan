@@ -22,7 +22,7 @@ const Header = () => {
     },
     {
       children: 'Species',
-      to: 'species'
+      to: 'species/?page=1'
     },
     {
       children: 'Search',

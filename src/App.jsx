@@ -6,6 +6,7 @@ import FavoritesPage from './pages/favorites-page';
 import CharacterPage from './pages/character-page';
 import FilmsPage from './pages/films-page';
 import FilmPage from './pages/film-page';
+import SpeciesPage from './pages/species-page';
 import SearchPage from './pages/search-page';
 import Header from './components/Header/Header';
 import Error from './components/Error/Error';
@@ -30,7 +31,8 @@ function App() {
           <Route path='/characters/:id' element={<CharacterPage />} />
           <Route path='/films' element={<FilmsPage />} />
           <Route path='/films/:id' element={<FilmPage />} />
-          <Route path='/species' element={<div>Species</div>} />
+          <Route path='/species' element={<SpeciesPage />} />
+          <Route path='/species/:id' element={<div>single Species</div>} />
           <Route path='/search' element={<SearchPage />} />
           <Route path='/favorites' element={<FavoritesPage />} />
 

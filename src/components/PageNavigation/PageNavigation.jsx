@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 import styles from './PageNavigation.module.css';
 
-const PageNavigation = ({ urlAddress, counterPage, getCharacters, prevPage, nextPage, pageLoading }) => {
+const PageNavigation = ({ urlAddress, counterPage, getRequest, prevPage, nextPage, pageLoading }) => {
 
   return (
     <div className={styles.wrapper}>
       <Link
         to={`${urlAddress}${counterPage - 1}`}
-        onClick={() => getCharacters(prevPage)}>
+        onClick={() => getRequest(prevPage)}>
         <button className={styles.btn}
           disabled={!prevPage || pageLoading ? true : false}>
           prev
@@ -18,7 +18,7 @@ const PageNavigation = ({ urlAddress, counterPage, getCharacters, prevPage, next
 
       <Link
         to={`${urlAddress}${counterPage + 1}`}
-        onClick={() => getCharacters(nextPage)}>
+        onClick={() => getRequest(nextPage)}>
         <button className={styles.btn}
           disabled={!nextPage || pageLoading ? true : false}>
           next

@@ -1,0 +1,65 @@
+.list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr); 
+    justify-items: center;
+    row-gap: 50px;
+}
+
+.card {
+    position: relative;
+    width: 200px;
+    cursor: pointer;
+}
+
+.cardLink {
+    display: block;
+}
+
+.card:hover {
+    -webkit-box-shadow: 0px 0px 26px 1px var(--color-light-red);
+    -moz-box-shadow: 0px 0px 26px 1px var(--color-light-red);
+    box-shadow: 0px 0px 26px 1px var(--color-light-red);
+}
+
+.card:hover .nameBlock {
+    padding: 16px;
+    background-color: var(--color-light-red);
+}
+
+.nameBlock {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 6px;
+    background-color: var(--color-white);
+    transition: all .2s ease-in-out;
+}
+
+.name {
+    display: flex;
+    justify-content: center;
+    color:  var(--color-black);
+}
+
+.img {
+    width: 100%;
+}
+
+@media (max-height: 800px)  {
+    .list {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        justify-items: center;
+        row-gap: 50px;
+    }
+
+    .card {
+        width: 160px;
+        font-size: 12px;
+    }
+
+    .card:hover .nameBlock {
+        padding: 10px;
+    }
+}

@@ -1,35 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { GET_SPECIES, PARAM_PAGE, BASE_IMG_URL } from '@utils/constants';
 import { getApiResource } from '@utils/network';
 import { getPageId, getNumFromStr } from '@utils/helpers';
-import { GET_CHARACTERS, BASE_IMG_URL, PARAM_PAGE } from '@utils/constants';
-import { setChars } from '@redux/slices/charactersSlice';
+import { setSpeciesList } from '@redux/slices/speciesSlice';
 import { setApiStatus } from '@redux/slices/apiSlice';
 import { useQueryParams } from '@hooks/useQueryParams';
 
-import Loader from '../Loader/Loader';
-import Error from '../Error/Error';
 import PageNavigation from '../PageNavigation/PageNavigation';
+import Error from '../Error/Error';
+import Loader from '../Loader/Loader';
 
-import styles from './Characters.module.css';
+import styles from './Species.module.css';
 
-const Characters = () => {
+const Species = () => {
   const dispatch = useDispatch()
-  const { charactersList } = useSelector(state => state.characters)
+  const { speciesList } = useSelector(state => state.species)
   const { apiError } = useSelector(state => state.api)
 
+  const [pageLoading, setPageLoading] = React.useState(false)
   const [prevPage, setPrevPage] = React.useState(null)
   const [nextPage, setNextPage] = React.useState(null)
-  const [pageLoading, setPageLoading] = React.useState(false)
   const [counterPage, setCounterPage] = React.useState(1)
   const queryPage = useQueryParams().get('page')
 
-  const getCharacters = async (url) => {
+  const getSpecies = async (url) => {
     try {
       setPageLoading(true)
       const data = await getApiResource(url)
-      dispatch(setChars(data.results))
+      dispatch(setSpeciesList(data.results))
 
       setPrevPage(data.previous)
       setNextPage(data.next)
@@ -43,7 +43,7 @@ const Characters = () => {
   }
 
   React.useEffect(() => {
-    getCharacters(GET_CHARACTERS + PARAM_PAGE + queryPage)
+    getSpecies(GET_SPECIES + PARAM_PAGE + queryPage)
   }, [])
 
   React.useEffect(() => {
@@ -55,9 +55,9 @@ const Characters = () => {
   return (
     <>
       <PageNavigation
-        urlAddress='/characters/?page='
+        urlAddress='/species/?page='
         counterPage={counterPage}
-        getRequest={getCharacters}
+        getRequest={getSpecies}
         prevPage={prevPage}
         nextPage={nextPage}
         pageLoading={pageLoading}
@@ -65,27 +65,27 @@ const Characters = () => {
 
       {apiError ?
         <Error /> :
-        charactersList && !charactersList.length ?
+        speciesList && !speciesList.length ?
           <Loader /> :
           <ul className={styles.list}>
-            {charactersList && charactersList.map((character, i) =>
-              <li className={styles.card} key={character + i}>
+            {speciesList && speciesList.map((race, i) =>
+              <li className={styles.card} key={race + i}>
                 <Link
-                  to={`/characters/${getNumFromStr(character.url)}`}
+                  to={`/species/${getNumFromStr(race.url)}`}
                   className={styles.cardLink}>
                   <div className={styles.nameBlock}>
-                    <h4 className={styles.name}>{character.name}</h4>
+                    <h4 className={styles.name}>{race.name}</h4>
                   </div>
                   <img
                     className={styles.img}
-                    src={`${BASE_IMG_URL}/characters/${getNumFromStr(character.url)}.jpg`}
+                    src={`${BASE_IMG_URL}/species/${getNumFromStr(race.url)}.jpg`}
                     alt="char-img" />
                 </Link>
               </li>
             )}
           </ul>}
     </>
-  )
+  );
 };
 
-export default Characters;
+export default Species;
