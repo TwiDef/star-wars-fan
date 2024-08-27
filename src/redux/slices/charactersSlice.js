@@ -25,10 +25,13 @@ export const charactersSlice = createSlice({
           return char.name !== action.payload.name
         })
       }
+    },
+    clearFavorites: (state) => {
+      state.favorites = []
     }
   }
 })
 
-export const { setChars, setSingleChar, addToFavorites } = charactersSlice.actions
+export const { setChars, setSingleChar, addToFavorites, clearFavorites } = charactersSlice.actions
 
 export default charactersSlice.reducer

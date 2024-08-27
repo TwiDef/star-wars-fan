@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearFavorites } from '@redux/slices/charactersSlice';
 import { BASE_IMG_URL } from '@utils/constants';
 import { getNumFromStr } from '@utils/helpers';
 
@@ -9,7 +10,13 @@ import Loader from '../Loader/Loader';
 import styles from './Favorites.module.css';
 
 const Favorites = () => {
+  const dispatch = useDispatch()
   const { favorites } = useSelector(state => state.characters)
+
+  const handleClear = () => {
+    const removeRequest = window.confirm('Do you wanna clear favorites list?')
+    if (removeRequest) dispatch(clearFavorites())
+  }
 
   return (
     <>
@@ -35,6 +42,12 @@ const Favorites = () => {
                 </li>
               )}
             </ul>
+            <button
+              className={styles.remove}
+              onClick={handleClear}>
+              <h6>remove all</h6>
+              <img src="https://cdn-icons-png.flaticon.com/512/17374/17374498.png" alt="remove-all" />
+            </button>
           </>
         ) :
         <div className={styles.empty}>
