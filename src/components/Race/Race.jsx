@@ -1,12 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { getApiResource } from '@utils/network';
+import { getApiResource, getApiResources } from '@utils/network';
 import { getNumFromStr } from '@utils/helpers';
 import { GET_SPECIES, BASE_IMG_URL } from '@utils/constants';
 import { setApiStatus } from '@redux/slices/apiSlice';
 import { setRace } from '@redux/slices/speciesSlice';
 
+import CharList from '../CharList/CharList';
 import Error from '../Error/Error';
 import ButtonBack from '../ButtonBack/ButtonBack';
 import Loader from '../Loader/Loader';
@@ -17,6 +18,7 @@ const Race = () => {
   const dispatch = useDispatch()
   const { race } = useSelector(state => state.species)
   const { apiError } = useSelector(state => state.api)
+  const [chars, setChars] = React.useState([])
   const [raceInfo, setRaceInfo] = React.useState(null)
   const params = useParams()
   const id = params.id
@@ -52,6 +54,13 @@ const Race = () => {
     }
   }, [id])
 
+  React.useEffect(() => {
+    if (race) {
+      getApiResources(race.people)
+        .then(people => setChars(people))
+    }
+  }, [race])
+
   return (
     <>
       {apiError ? <Error /> :
@@ -81,7 +90,7 @@ const Race = () => {
               </div>
               <div className={styles.charInfo}>
                 <h2 className={styles.charTitle}>Related Characters</h2>
-                <p>list of people</p>
+                <CharList chars={chars} />
               </div>
             </div>
 
