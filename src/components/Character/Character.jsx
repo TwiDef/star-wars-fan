@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setSingleChar, addToFavorites } from '@redux/slices/charactersSlice';
 import { setApiStatus } from '@redux/slices/apiSlice';
 import { getApiResource, getApiResources } from '@utils/network';
-import { BASE_URL, BASE_IMG_URL } from '@utils/constants';
+import { GET_CHARACTERS, BASE_IMG_URL } from '@utils/constants';
 import { getNumFromStr } from '@utils/helpers';
 
 import like_active from '@assets/img/like_active.png';
@@ -64,7 +64,7 @@ const Character = () => {
   }, [favorites, singleCharacter])
 
   React.useEffect(() => {
-    getCharacter(BASE_URL + 'people/' + id)
+    getCharacter(GET_CHARACTERS + id)
     return () => {
       dispatch(setSingleChar(null))
     }
