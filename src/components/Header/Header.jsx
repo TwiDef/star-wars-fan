@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
 
 const Header = () => {
+  const [sideMenuActive, setSideMenuActive] = React.useState(false)
   const { favorites } = useSelector(state => state.characters)
 
   const headerItems = [
@@ -32,18 +33,29 @@ const Header = () => {
 
   return (
     <header>
-      <nav className={styles.wrapper}>
+
+      <div
+        className={`${styles.menuBtn} ${sideMenuActive ? styles.menuActive : ""}`}
+        onClick={() => setSideMenuActive(!sideMenuActive)}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav className={`${styles.wrapper} ${!sideMenuActive ? styles.active : ""}`}>
         <Link
           className={styles.link}
           to="/">
           <img
             className={styles.logo}
+            onClick={() => setSideMenuActive(!sideMenuActive)}
             src="https://cdn-icons-png.flaticon.com/512/15475/15475029.png" alt="header-logo" />
         </Link>
         <ul className={styles.items}>
           {headerItems.map((item, i) =>
             <li className={styles.item} key={i}>
               <NavLink
+                onClick={() => setSideMenuActive(!sideMenuActive)}
                 to={item.to}
                 className={({ isActive }) => isActive ? `${styles.itemActive}` : ""}>
                 {item.children}
@@ -60,7 +72,7 @@ const Header = () => {
             src="https://cdn-icons-png.flaticon.com/512/9513/9513598.png " alt="favorites-logo" />
         </Link>
       </nav>
-    </header>
+    </header >
   );
 };
 

@@ -99,3 +99,9 @@ button {
     max-width: 1080px;
   }
 }
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 0;
+  }
+}
