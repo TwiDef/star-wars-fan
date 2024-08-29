@@ -69,6 +69,7 @@ const Header = () => {
           <span className={styles.countOfFavorites}>{favorites.length}</span>
           <img
             className={styles.favorites}
+            onClick={() => setSideMenuActive(!sideMenuActive)}
             src="https://cdn-icons-png.flaticon.com/512/9513/9513598.png " alt="favorites-logo" />
         </Link>
       </nav>

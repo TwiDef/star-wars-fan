@@ -1,13 +1,16 @@
 @import url('https://fonts.cdnfonts.com/css/star-wars');
 
 .wrapper {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  /*   display: flex;
+    justify-content: space-between; */
    /*  gap: 100px; */
 }
 
 .image, .info, .filmInfo {
-    width: 33.33%;
+    /* width: 33.33%; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,12 +32,16 @@ h2 {
     object-position: center center;
 }
 
+.img {
+    width: 100%;    
+}
+
 .like {
     position: absolute;
     width: 40px;
     height: 40px;
     top: 35px;
-    left: -20px;
+    right: -20px;
 }
 
 .info{
@@ -51,3 +58,134 @@ h2 {
     margin-bottom: 10px;
 }
 
+@media(max-width: 1024px) {
+    .wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        grid-row-gap: 20px;
+        justify-items: center;
+    }
+
+    .image {
+        width: 250px;
+    }
+
+    .like {
+        top: 8px;
+    }
+
+    .wrapper h2 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .image {
+        height: 260px;
+        width: 150px;
+    }
+
+    .like {
+        top: 34px;
+    }
+
+    .info {
+        font-size: 16px;
+    }
+
+    .info li:first-child {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 640px) {
+    .wrapper h2 {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .image {
+        margin-right: 30px;
+    }
+
+    .info {
+        margin-left: -40px;
+        font-size: 12px;
+    }
+}
+/* 
+@media (max-width: 1280px) {
+    .wrapper {
+      
+    }
+    .image, .info, .filmInfo {
+        
+    }
+    .img {
+        width: 300px;
+    }
+
+    .like {
+        right: 30px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .img {
+        width: 220px;
+    }
+
+    .image {
+       display: block;
+    }
+
+    .like {
+        right: 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .info{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .wrapper {
+        display: grid;
+        justify-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 10px;
+    }
+    .image { 
+        width: 100%;
+        grid-area: 1 / 1 / 2 / 2; 
+    }
+    .img {
+        width: 10px;
+    }
+    .info { 
+        width: 100%;
+        grid-area: 1 / 2 / 2 / 3; 
+    }
+    .filmInfo { 
+        padding-left: 10px;
+        width: 100%;
+        grid-area: 2 / 1 / 3 / 2; 
+    }
+    h2 {
+        font-size: 18px;
+    }
+
+
+}
+
+@media (max-width: 640px) {
+
+}
+ */

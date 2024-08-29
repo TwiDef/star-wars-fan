@@ -66,3 +66,29 @@
 .noResults h4 {
     font-size: 26px;
 }
+
+
+@media (max-width: 1024px) {
+    .charName {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .charList {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 4%;
+    }
+}
+
+
+@media (max-width: 640px) {
+    .charName {
+        font-size: 12px;
+    }
+
+    .charImgWrapper {
+        width: 60px;
+        height: 60px;
+    }
+}

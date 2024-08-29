@@ -90,6 +90,7 @@ const Character = () => {
                     src={likeStatus ? like_active : like_disactive} alt="like-img" />
                 </button>
                 <img
+                  className={styles.img}
                   src={`${BASE_IMG_URL}/characters/${getNumFromStr(singleCharacter.url)}.jpg`}
                   alt="char-img" />
               </div>

@@ -43,3 +43,12 @@
      0px 2px 15px var(--color-light-blue),
       -5px 2px 15px var(--color-light-blue);
 }
+
+
+@media (max-width: 640px) {
+
+    .inputClearBtn {
+        top: 8px;
+        right: 6px;
+    }
+}

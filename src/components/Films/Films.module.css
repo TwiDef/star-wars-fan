@@ -81,13 +81,32 @@
 
 @media (max-width: 768px) {
     .list {
+        padding: 0 5%;
         margin-top: 6%;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         row-gap: 40px;
     }
     
     .card {
         width: 140px;
+    }
+
+    .nameBlock h4 {
+        font-size: 11px;
+    }
+}
+
+
+@media (max-width: 640px) {
+    .list {
+        padding: 0 10%;
+        margin-top: 6%;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 20px;
+    }
+    
+    .card {
+        width: 120px;
     }
 
     .nameBlock h4 {

@@ -23,3 +23,14 @@
       0px 2px 15px var(--color-light-blue),
        -5px 2px 15px var(--color-light-blue);
 }
+
+@media (max-width: 768px) {
+    .goBackBtn {
+        font-size: 16px;
+    }
+
+    .goBackBtn span {
+        top: -19px;
+        left: -45px;
+    }
+}

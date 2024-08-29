@@ -42,3 +42,38 @@
     font-size: 18px;
     width: 200px;
 }
+
+@media (max-width: 1024px) {
+    .imgWrapper  {
+        width: 60px;
+        height: 60px;
+    }
+
+    .link h5 {
+
+        font-size: 16px;
+    }
+
+    .title {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    
+}
+
+@media (max-width: 640px) {
+    .imgWrapper  {
+        width: 40px;
+        height: 40px;
+    }
+
+    .list li{
+       padding-left: 10px;
+    }
+
+    .list li:first-child {
+        margin-top: 10px;
+    }
+}
