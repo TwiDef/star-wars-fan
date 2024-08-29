@@ -63,3 +63,29 @@
         padding: 10px;
     }
 }
+
+@media (max-width: 1024px) {
+    .card {
+        width: 140px;
+    }
+
+    .name {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .list {
+        margin-top: 15%;
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 40px;
+    }
+
+    .card {
+        width: 90px;
+    }
+
+    .name {
+        font-size: 8px;
+    }
+}

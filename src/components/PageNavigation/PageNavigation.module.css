@@ -33,3 +33,14 @@
     transform: none;
     cursor: no-drop;
 }
+
+@media (max-width: 1024px)  {
+    .wrapper {
+        width: calc(1024px - 50%);
+    }
+}
+@media (max-width: 768px) {
+    .wrapper {
+        width: 100%;
+    }
+}
