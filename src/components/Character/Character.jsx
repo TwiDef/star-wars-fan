@@ -83,32 +83,35 @@ const Character = () => {
         singleCharacter ?
           <>
             <div className={styles.wrapper}>
-              <div className={styles.image}>
-                <h2 className={styles.title}>{singleCharacter.name}</h2>
-                <button onClick={toggleToFavorites}>
-                  <img className={styles.like}
-                    src={likeStatus ? like_active : like_disactive} alt="like-img" />
-                </button>
-                <img
-                  className={styles.img}
-                  src={`${BASE_IMG_URL}/characters/${getNumFromStr(singleCharacter.url)}.jpg`}
-                  alt="char-img" />
+              <div className={styles.infoTop}>
+                <div className={styles.image}>
+                  <h2 className={styles.title}>{singleCharacter.name}</h2>
+                  <button className={styles.like} onClick={toggleToFavorites}>
+                    <img
+                      src={likeStatus ? like_active : like_disactive} alt="like-img" />
+                  </button>
+                  <img
+                    className={styles.photo}
+                    src={`${BASE_IMG_URL}/characters/${getNumFromStr(singleCharacter.url)}.jpg`}
+                    alt="char-img" />
+                </div>
+                <div className={styles.info}>
+                  <h2 className={styles.infoTitle}>Info</h2>
+                  <ul className={styles.infoList}>
+                    {charInfo && (
+                      charInfo.map(({ property, evidence }, i) => {
+                        return (
+                          <li key={i}>
+                            <h4 className={styles.propertyTitle}>{property}: </h4><p>{evidence}</p>
+                            {property === 'height' ? ' cm' : ''}
+                            {property === 'mass' ? ' kg' : ''}
+                          </li>)
+                      })
+                    )}
+                  </ul>
+                </div>
               </div>
-              <div className={styles.info}>
-                <h2 className={styles.infoTitle}>Info</h2>
-                <ul className={styles.infoList}>
-                  {charInfo && (
-                    charInfo.map(({ property, evidence }, i) => {
-                      return (
-                        <li key={i}>
-                          <h4>{property}: </h4>{evidence}
-                          {property === 'height' ? ' cm' : ''}
-                          {property === 'mass' ? ' kg' : ''}
-                        </li>)
-                    })
-                  )}
-                </ul>
-              </div>
+
               <div className={styles.filmInfo}>
                 <h2 className={styles.filmTitle}>Related Films</h2>
                 <FilmList films={films} />
