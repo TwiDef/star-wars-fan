@@ -67,6 +67,49 @@ const Race = () => {
         race ?
           <>
             <div className={styles.wrapper}>
+              <div className={styles.infoTop}>
+                <div className={styles.image}>
+                  <h2 className={styles.title}>{race.name}</h2>
+                  <img
+                    className={styles.photo}
+                    src={`${BASE_IMG_URL}/species/${getNumFromStr(race.url)}.jpg`}
+                    alt="char-img" />
+                </div>
+                <div className={styles.info}>
+                  <h2 className={styles.infoTitle}>Info</h2>
+                  <ul className={styles.infoList}>
+                    {raceInfo && (
+                      raceInfo.map(({ property, evidence }, i) => {
+                        return (
+                          <li key={i}>
+                            <h4 className={styles.propertyTitle}>{property}: </h4><p>{evidence}</p>
+                            {property === 'average height' ? ' cm' : ''}
+                            {property === 'average lifespan' ? ' years' : ''}
+                          </li>)
+                      })
+                    )}
+                  </ul>
+                </div>
+              </div>
+
+              <div className={styles.CharInfo}>
+                <h2 className={styles.CharTitle}>Related Characters</h2>
+                <CharList chars={chars} />
+              </div>
+            </div>
+
+            <ButtonBack />
+          </>
+          : <Loader />}
+    </>
+  );
+
+  /* return (
+    <>
+      {apiError ? <Error /> :
+        race ?
+          <>
+            <div className={styles.wrapper}>
               <div className={styles.image}>
                 <h2 className={styles.title}>{race.name}</h2>
                 <img
@@ -98,7 +141,7 @@ const Race = () => {
           </>
           : <Loader />}
     </>
-  );
+  ); */
 };
 
 export default Race;

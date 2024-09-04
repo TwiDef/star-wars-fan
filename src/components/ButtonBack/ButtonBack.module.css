@@ -8,7 +8,7 @@
     font-size: 20px;
     font-weight: 600;
     background: none;
-    color: var(--color-white);
+    color: var(--color-light-red);
 }
 .goBackBtn span {
     position: absolute;
