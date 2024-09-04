@@ -89,6 +89,10 @@
 }
 
 @media (max-width: 768px) {
+    .image h2, .filmInfo h2, .info h2 {
+        font-size: 26px;
+    }
+
     .photo {
         width: 200px;
     }
@@ -107,12 +111,17 @@
 }
 
 @media (max-width: 640px) {
+    .image h2, .filmInfo h2, .info h2 {
+        font-size: 18px;
+    }
+
     .photo {
         width: 140px;
     }
 
     .like {
-        right: -14px;
+        right: -20px;
+        top: 14px;
     }
 
     .info {
