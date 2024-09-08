@@ -1,6 +1,7 @@
 {
   "name": "star-wars-fan",
   "version": "0.1.0",
+  "homepage": "https://TwiDef.github.io/star-wars-fan/",
   "private": true,
   "dependencies": {
     "@craco/craco": "^7.1.0",
