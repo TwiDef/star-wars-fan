@@ -88,6 +88,10 @@
     text-align: center;    
 }
 
+.filmTitle {
+    margin-bottom: 30px;
+}
+
 @media (max-width: 768px) {
     .image h2, .filmInfo h2, .info h2 {
         font-size: 26px;
@@ -107,6 +111,10 @@
 
     .propertyTitle {
         font-size: 20px;
+    }
+
+    .filmTitle {
+        margin-bottom: 20px;
     }
 }
 
@@ -134,5 +142,9 @@
 
     .propertyTitle {
         font-size: 16px;
+    }
+
+    .CharTitle {
+        margin-bottom: 10px;
     }
 }

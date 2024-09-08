@@ -57,7 +57,7 @@ html {
   }
   
   
-/*   @keyframes animStar {
+  @keyframes animStar {
     from {
       transform: translateY(0px);
     }
@@ -65,7 +65,7 @@ html {
       transform: translateY(-2000px);
     }
   }
- */
+
 
 * { 
     margin: 0; 

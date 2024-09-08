@@ -12,7 +12,7 @@ const FilmList = ({ films }) => {
       {films && films.length > 0 ? films.map(({ url, episode_id, title }, i) => {
         return (
           <li key={i}>
-            <Link className={styles.link} to={`/films/${episode_id}`}>
+            <Link className={styles.link} to={`/films/${getNumFromStr(url)}`}>
               <div className={styles.imgWrapper}>
                 <img src={`${BASE_IMG_URL}/films/${getNumFromStr(url)}.jpg`} alt="film-img" />
               </div>
