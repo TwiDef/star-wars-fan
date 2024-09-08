@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/star-wars-fan/static/css/main.c581839a.css",
+    "main.js": "/star-wars-fan/static/js/main.79a979a2.js",
+    "static/media/Starjhol.woff": "/star-wars-fan/static/media/Starjhol.ca4b8d6690a0b4f1861e.woff",
+    "index.html": "/star-wars-fan/index.html",
+    "main.c581839a.css.map": "/star-wars-fan/static/css/main.c581839a.css.map",
+    "main.79a979a2.js.map": "/star-wars-fan/static/js/main.79a979a2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c581839a.css",
+    "static/js/main.79a979a2.js"
+  ]
+}
