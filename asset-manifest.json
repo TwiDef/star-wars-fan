@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/star-wars-fan/static/css/main.828fc264.css",
-    "main.js": "/star-wars-fan/static/js/main.79a979a2.js",
-    "static/media/Starjhol.woff": "/star-wars-fan/static/media/Starjhol.ca4b8d6690a0b4f1861e.woff",
-    "index.html": "/star-wars-fan/index.html",
-    "main.828fc264.css.map": "/star-wars-fan/static/css/main.828fc264.css.map",
-    "main.79a979a2.js.map": "/star-wars-fan/static/js/main.79a979a2.js.map"
+    "main.css": "/static/css/main.c794fe2c.css",
+    "main.js": "/static/js/main.79a979a2.js",
+    "static/media/Starjhol.woff": "/static/media/Starjhol.ca4b8d6690a0b4f1861e.woff",
+    "index.html": "/index.html",
+    "main.c794fe2c.css.map": "/static/css/main.c794fe2c.css.map",
+    "main.79a979a2.js.map": "/static/js/main.79a979a2.js.map"
   },
   "entrypoints": [
-    "static/css/main.828fc264.css",
+    "static/css/main.c794fe2c.css",
     "static/js/main.79a979a2.js"
   ]
 }
