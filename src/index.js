@@ -8,7 +8,7 @@ import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter /* basename='/star-wars-fan/' */>
     <Provider store={store}>
       <App />
     </Provider>
